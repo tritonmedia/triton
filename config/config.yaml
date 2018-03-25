@@ -1,0 +1,54 @@
+# Development Configuration
+production:
+  keys:
+    trello:
+      token: b49bab1a962182f9c47c5e800f9a0331607c031fc1a9562c3ede6bd4b87f0749
+      key: b86138cf68f35be6683b7c9c52e68765
+    minio:
+      accessKey: AKIAIOSFODNN7EXAMPLE
+      secretKey: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+  instances:
+    default:
+      host: '127.0.0.1'
+    media:
+      location: './production'
+      types:
+        movie: '/movies'
+        tv: '/tv'
+    converter:
+      download_path: './downloading'
+      transcoding_path: './transcoding'
+      encoder: 'handbrake'
+      settings:
+        video:
+          codec: 'x264'
+          profile: 'high'
+          preset: 'veryfast'
+          tune: 'animation'
+          quality: 16
+        audio:
+          codec: 'copy:flac'
+          fallback: 'flac16'
+          mixdown: 'dpl2'
+        subtitles:
+          codec: 'copy'
+          strip_pictures: true
+      enabled: true
+    events:
+      # Non-short ID: 5a65133a4c47f638cd4ff1e8
+      board: vIGH0IiL
+      webhook: https://app.tritonjs.com/webhook
+      flow_ids:
+        requests: 5a65133a4c47f638cd4ff1e9
+        ready: 5a651445352cf0b90f149df3
+        downloading: 5a65133a4c47f638cd4ff1ea
+        processing: 5a65133a4c47f638cd4ff1eb
+        complete: 5a657817fd5b200ba98fd44b
+        staging: 5a91d51b52c2b6b49180044d
+        deployed: 5a651367c5be24939d689c19
+        error: 5a65133a4c47f638cd4ff1e9
+      labels:
+        metadata: 5a65133a9ae3d60b0cec908f
+        error: 5a6ce1f33ad2496fefd8129a
+        movie: 5a65133a9ae3d60b0cec9090
+      copy_checklists: true

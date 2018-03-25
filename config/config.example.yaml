@@ -1,0 +1,82 @@
+production:
+  keys:
+    # Trello Credentials used when running with pre-v1 trello board
+    trello:
+      token: ''
+      key: ''
+    
+    # S3 credentials, ideally using Minio as a proxy
+    minio:
+      accessKey: AKIAIOSFODNN7EXAMPLE
+      secretKey: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+  instances:
+    # honestly idk
+    default:
+      host: '127.0.0.1'
+
+    # Twilight Configuration
+    media:
+      # Used by Twilight in FS mode
+      ## Base path for twilight to deploy into
+      location: './production'
+      types:
+        # Deployment path for movies
+        movie: '/movies'
+
+        # Deployment path for tv
+        tv: '/tv'
+
+    # Converter Configuration
+    converter:
+      # Path read by downloader for that path to download into
+      download_path: './downloading'
+
+      # Path for converter to transcode in
+      transcoding_path: './transcoding'
+
+      # Encoder, only handbrake is supported at the moment
+      encoder: 'handbrake'
+
+      # See hanbrakejs options
+      settings:
+        video:
+          codec: 'x264'
+          profile: 'high'
+          preset: 'veryfast'
+          tune: 'animation'
+          quality: 16
+        audio:
+          codec: 'copy:flac'
+          fallback: 'flac16'
+          mixdown: 'dpl2'
+        subtitles:
+          codec: 'copy'
+          strip_pictures: true
+    
+    # Used by pre-v1 trello board setup.
+    events:
+      # Non-short ID: 5a65133a4c47f638cd4ff1e8
+      board: vIGH0IiL
+
+      # Trello Webhook
+      webhook: https://app.tritonjs.com/webhook
+
+      # IDs for for Trello Columns
+      flow_ids:
+        requests: 5a65133a4c47f638cd4ff1e9
+        ready: 5a651445352cf0b90f149df3
+        downloading: 5a65133a4c47f638cd4ff1ea
+        processing: 5a65133a4c47f638cd4ff1eb
+        complete: 5a657817fd5b200ba98fd44b
+        staging: 5a91d51b52c2b6b49180044d
+        deployed: 5a651367c5be24939d689c19
+        error: 5a65133a4c47f638cd4ff1e9
+      
+      # IDs for Trello Labels
+      labels:
+        metadata: 5a65133a9ae3d60b0cec908f
+        error: 5a6ce1f33ad2496fefd8129a
+        movie: 5a65133a9ae3d60b0cec9090
+      
+      # Copy checklists when cards are created in Requests
+      copy_checklists: true
