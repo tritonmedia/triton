@@ -26,6 +26,7 @@ then look at `./config/config.yaml`. This is the config that will be used in thi
 Then run the development script, which will pull down the latest versions of all services.
 
 ```bash
+./bin/download-test-file.sh # Optional: Used to download a test file (used by ./bin/emulate-webhook.sh)
 ./development.sh
 ```
 

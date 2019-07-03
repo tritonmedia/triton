@@ -48,6 +48,7 @@ services:
       ALLOW_FILE_URLS: 'true'
     volumes:
     - ./config:/mnt/config
+    - /tmp/Bunny.mkv:/tmp/Bunny.mkv
 
   events:
     image: jaredallard/triton-events:prod

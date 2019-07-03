@@ -6,4 +6,5 @@ echo " --> pulling new image(s)"
 docker-compose pull
 
 echo " --> starting stack"
-docker-compose up
+docker-compose up -d
+docker-compose logs -f
