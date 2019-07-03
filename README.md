@@ -48,6 +48,10 @@ export CONFIG_PATH="$(pwd)/config/config.yaml"
 
 Then run the service like normal. Yep. It's that simple.
 
+## API Documentation
+
+Services are "documented" in their Paw files located in [./paw](paw)
+
 ## Important Things
 
  * Config field is denoted by the `NODE_ENV` variable, assumes `debug` if not set.

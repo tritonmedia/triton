@@ -2,8 +2,8 @@
 production:
   keys:
     trello:
-      token: b49bab1a962182f9c47c5e800f9a0331607c031fc1a9562c3ede6bd4b87f0749
-      key: b86138cf68f35be6683b7c9c52e68765
+      token: ''
+      key: ''
     minio:
       accessKey: AKIAIOSFODNN7EXAMPLE
       secretKey: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
