@@ -50,7 +50,9 @@ Then run the service like normal. Yep. It's that simple.
 
 ## API Documentation
 
-Services are "documented" in their Paw files located in [./paw](paw)
+Services are "documented" in their Paw files located in [./paw](paw). Paw is an awesome API client that can
+be located here: https://paw.cloud/. They have a free trial which can be used to export to Postman if you do not
+want to purchase this client.
 
 ## Important Things
 
