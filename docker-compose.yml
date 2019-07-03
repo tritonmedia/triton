@@ -37,6 +37,7 @@ services:
       MEDIA: 'http://twilight:8001'
       RABBITMQ: 'amqp://user:bitnami@rabbitmq'
       NODE_ENV: production
+      ALLOW_FILE_URLS: 'true'
     volumes:
     - ./config:/mnt/config
 

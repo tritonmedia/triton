@@ -15,16 +15,21 @@ and upload them to S3. The idea usecase is for uploading media to S3 to then be 
 
 # Developing on Triton
 
-First you'll need to fill out the example config in `config/config.example.yaml` and name
-that to `config/config.yaml`.
+## Dependencies
 
-Then you'll need to run:
+  * [Docker](https://docs.docker.com/install/)
+  * [docker-compose](https://docs.docker.com/compose/install/)
+
+Take a look at the config in `./config/config.example.yaml`. That contains information on what the config stucture is,
+then look at `./config/config.yaml`. This is the config that will be used in this environment.
+
+Then run the development script, which will pull down the latest versions of all services.
 
 ```bash
 ./development.sh
 ```
 
-That's it!
+That's it, the services are now running
 
 ## Hacking on a service
 
@@ -44,7 +49,6 @@ Then run the service like normal. Yep. It's that simple.
 
 ## Important Things
 
-* Config field is denoted by the `NODE_ENV` variable, assumes `debug` if not set.
+ * Config field is denoted by the `NODE_ENV` variable, assumes `debug` if not set.
 For production use `NODE_ENV=production`.
-
-* `export DEBUG=media:*` for debug logging
+ * Most applications use the `PORT` variable to determine which port to run on, you should set this when running locally.
