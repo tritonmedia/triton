@@ -33,6 +33,7 @@ services:
     image: jaredallard/triton-converter:prod
     environment:
       MEDIA: 'http://twilight:8001'
+      MINIO: 'http://minio:9000'
       RABBITMQ: 'amqp://user:bitnami@rabbitmq'
       NODE_ENV: production
     volumes:

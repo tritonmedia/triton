@@ -22,10 +22,9 @@ production:
       settings:
         video:
           codec: 'x264'
-          profile: 'high'
-          preset: 'veryfast'
-          tune: 'animation'
-          quality: 16
+          quality: 34
+          profile: baseline
+          preset: veryfast
         audio:
           codec: 'copy:flac'
           fallback: 'flac16'
