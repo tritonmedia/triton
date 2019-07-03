@@ -7,6 +7,14 @@ services:
     ports:
     - 5672:5672
     - 15672:15672
+
+  postgres:
+    image: bitnami/postgresql
+    environment:
+      ALLOW_EMPTY_PASSWORD: 'yes'
+      POSTGRESQL_DATABASE: media
+    ports:
+    - 5432:5432
   
   minio:
     image: minio/minio
