@@ -40,12 +40,13 @@ production:
       flow_ids:
         requests: 5a65133a4c47f638cd4ff1e9
         ready: 5a651445352cf0b90f149df3
+
+        # Correspond to the media status proto
         downloading: 5a65133a4c47f638cd4ff1ea
-        processing: 5a65133a4c47f638cd4ff1eb
-        complete: 5a657817fd5b200ba98fd44b
-        staging: 5a91d51b52c2b6b49180044d
+        converting: 5a65133a4c47f638cd4ff1eb
+        uploading: 5a657817fd5b200ba98fd44b
         deployed: 5a651367c5be24939d689c19
-        error: 5a65133a4c47f638cd4ff1e9
+        errored: 5a65133a4c47f638cd4ff1e9
       labels:
         metadata: 5a65133a9ae3d60b0cec908f
         error: 5a6ce1f33ad2496fefd8129a
