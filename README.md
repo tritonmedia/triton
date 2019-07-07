@@ -17,9 +17,9 @@ and upload them to S3. The idea usecase is for uploading media to S3 to then be 
 
 We havea few installation options:
 
-  * Quick evaluation
-  * Kubernetes 
-  * Docker
+  * [Quick evaluation](#quick-evaluation)
+  * [Kubernetes](#kubernetes) 
+  * [Docker](#docker)
 
 ### Quick Evaluation
 
@@ -33,7 +33,7 @@ $ docker-compose up
 
 **NOTE**: This is a production setup, but it is in the process of being revamped to be more user friendly.
 
-Clone the [charts](../charts) repo.
+Clone the [charts](https://github.com/tritonmedia/charts) repo.
 
 ```bash
 $ git clone git@github.com:tritonmedia/charts
