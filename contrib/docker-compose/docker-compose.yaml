@@ -32,7 +32,7 @@ services:
       MEDIA: 'http://twilight:8001'
       MINIO: 'http://minio:9000'
       RABBITMQ: 'amqp://user:bitnami@rabbitmq'
-      NODE_ENV: production
+      CONFIG_ENV: production
     volumes:
     - ./config:/mnt/config
 
@@ -42,11 +42,9 @@ services:
       MINIO: 'http://minio:9000'
       MEDIA: 'http://twilight:8001'
       RABBITMQ: 'amqp://user:bitnami@rabbitmq'
-      NODE_ENV: production
-      ALLOW_FILE_URLS: 'true'
+      CONFIG_ENV: production
     volumes:
     - ./config:/mnt/config
-    - /tmp/Bunny.mkv:/tmp/Bunny.mkv
 
   events:
     image: jaredallard/triton-events:prod
@@ -54,10 +52,20 @@ services:
       RABBITMQ: 'amqp://user:bitnami@rabbitmq'
       POSTGRES: 'postgres'
       NO_TRELLO: 'true' 
-      NODE_ENV: production
+      CONFIG_ENV: production
     command: events
     ports:
     - 3401:3401 # Webhook
+    volumes:
+    - ./config:/mnt/config
+
+  beholder:
+    image: jaredallard/triton-beholder:prod
+    environment:
+      RABBITMQ: 'amqp://user:bitnami@rabbitmq'
+      POSTGRES: 'postgres'
+      CONFIG_ENV: production
+    command: beholder
     volumes:
     - ./config:/mnt/config
 
@@ -66,7 +74,7 @@ services:
     environment:
       MINIO: 'http://minio:9000'
       RABBITMQ: 'amqp://user:bitnami@rabbitmq'
-      NODE_ENV: production
+      CONFIG_ENV: production
     command: twilight
     volumes:
     - ./config:/mnt/config
