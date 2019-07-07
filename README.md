@@ -13,6 +13,55 @@ TRITON is a media pipeline that is aimed towards converting media from unknown f
 and upload them to S3. The idea usecase is for uploading media to S3 to then be used by 
 [Jellyfin](https://github.com/jellyfin)/[Plex](https://github.com/plex).
 
+# Installing Triton
+
+We havea few installation options:
+
+  * Quick evaluation
+  * Kubernetes 
+  * Docker
+
+### Quick Evaluation
+
+**NOTE**: This is not a production setup. It has insecure credentials, and no data persistence.
+
+```bash
+$ docker-compose up
+```
+
+### Kubernetes
+
+**NOTE**: This is a production setup, but it is in the process of being revamped to be more user friendly.
+
+Clone the [charts](../charts) repo.
+
+```bash
+$ git clone git@github.com:tritonmedia/charts
+$ cd charts
+$ helm install ./tritonmedia
+```
+
+You should now have the triton platform running!
+
+### Docker
+
+**NOTE**: This is intended for a single-node setup.
+
+```bash
+$ cd contrib/docker-compose
+```
+
+You should checkout the `config/config.yaml` and the `docker-compose.yaml` here to assume that you are OK
+with the `CHANGME` access_key and secret_key being set for minio, as well as the postgres passwords.
+
+When you are:
+
+```bash
+$ docker-compose up -d
+```
+
+The pipeline is now running! The API is accessible at `<ip>:3401`
+
 # Developing on Triton
 
 ## Dependencies
