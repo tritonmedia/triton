@@ -31,6 +31,7 @@ services:
     environment:
       MEDIA: 'http://twilight:8001'
       MINIO: 'http://minio:9000'
+      POSTGRES: 'postgres'
       RABBITMQ: 'amqp://user:bitnami@rabbitmq'
       CONFIG_ENV: production
     volumes:
