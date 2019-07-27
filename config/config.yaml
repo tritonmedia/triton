@@ -7,6 +7,10 @@ production:
     minio:
       accessKey: AKIAIOSFODNN7EXAMPLE
       secretKey: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    telegram:
+      token: "FIXME"
+    emby:
+      token: ""
   instances:
     default:
       host: '127.0.0.1'
@@ -34,6 +38,13 @@ production:
           strip_pictures: true
       enabled: true
     events:
+      emby:
+        enabled: false
+        host: https://media.tritonjs.com
+      telegram:
+        enabled: false
+        channel: '@tritonmedia_staging'
+
       # Non-short ID: 5a65133a4c47f638cd4ff1e8
       board: vIGH0IiL
       webhook: https://app.tritonjs.com/webhook

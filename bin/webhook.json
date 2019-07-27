@@ -1,19 +1,128 @@
 {
-  "action": {
-    "type": "updateCard",
-    "data": {
-      "listBefore": {
-        "id": "5a65133a4c47f638cd4ff1e9"
-      },
-      "listAfter": {
-        "id": "5a651445352cf0b90f149df3"
-      },
-      "card": {
-        "id": "5a94bd7f1743eee577a6461d",
-        "card": {
-          "id": "5a94bd7f1743eee577a6461d"
+  "action":{
+     "type":"updateCard",
+     "data":{
+        "listBefore":{
+           "id":"5a65133a4c47f638cd4ff1e9"
+        },
+        "listAfter":{
+           "id":"5a651445352cf0b90f149df3"
+        },
+        "card":{
+           "id":"5a94bd7f1743eee577a6461d",
+           "address":null,
+           "badges":{
+              "attachmentsByType":{
+                 "trello":{
+                    "board":0,
+                    "card":0
+                 }
+              },
+              "location":false,
+              "votes":0,
+              "viewingMemberVoted":false,
+              "subscribed":false,
+              "fogbugz":"",
+              "checkItems":0,
+              "checkItemsChecked":0,
+              "comments":481,
+              "attachments":2,
+              "description":true,
+              "due":null,
+              "dueComplete":false
+           },
+           "checkItemStates":[
+
+           ],
+           "closed":false,
+           "coordinates":null,
+           "creationMethod":null,
+           "dueComplete":false,
+           "dateLastActivity":"2019-07-14T01:23:46.245Z",
+           "desc":"DOWNLOAD [file](file:///tmp/Bunny.mkv)",
+           "descData":{
+              "emoji":{
+
+              }
+           },
+           "due":null,
+           "dueReminder":null,
+           "email":"jaredallard+2lqcb6f7xq6iwx6ilrn+2puduodlxu3n3qyegpp+2fuyxqt1n8@boards.trello.com",
+           "idBoard":"5a65133a4c47f638cd4ff1e8",
+           "idChecklists":[
+
+           ],
+           "idLabels":[
+              "5a65133a9ae3d60b0cec908f",
+              "5a65133a9ae3d60b0cec9090"
+           ],
+           "idList":"5a651367c5be24939d689c19",
+           "idMembers":[
+
+           ],
+           "idMembersVoted":[
+
+           ],
+           "idShort":89,
+           "idAttachmentCover":null,
+           "labels":[
+              {
+                 "id":"5a65133a9ae3d60b0cec908f",
+                 "idBoard":"5a65133a4c47f638cd4ff1e8",
+                 "name":"Valid",
+                 "color":"green"
+              },
+              {
+                 "id":"5a65133a9ae3d60b0cec9090",
+                 "idBoard":"5a65133a4c47f638cd4ff1e8",
+                 "name":"Movie",
+                 "color":"purple"
+              }
+           ],
+           "checklists":[
+
+           ],
+           "limits":{
+              "attachments":{
+                 "perCard":{
+                    "status":"ok",
+                    "disableAt":1000,
+                    "warnAt":900
+                 }
+              },
+              "checklists":{
+                 "perCard":{
+                    "status":"ok",
+                    "disableAt":500,
+                    "warnAt":450
+                 }
+              },
+              "stickers":{
+                 "perCard":{
+                    "status":"ok",
+                    "disableAt":70,
+                    "warnAt":63
+                 }
+              }
+           },
+           "customFieldItems":[
+
+           ],
+           "locationName":null,
+           "manualCoverAttachment":false,
+           "name":"Test Card",
+           "pos":131073,
+           "shortLink":"zjnN2BTo",
+           "shortUrl":"https://trello.com/c/zjnN2BTo",
+           "subscribed":false,
+           "members":[
+
+           ],
+           "url":"https://trello.com/c/zjnN2BTo/89-test-card",
+           "pluginData":[
+
+           ]
         }
-      }
-    }
+     }
   }
 }
