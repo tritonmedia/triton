@@ -9,7 +9,7 @@
 
 # What is TRITON?
 
-TRITON is a media pipeline that aims to go one step further than services like [Jellyfin](https://jellyfin.media) and [Plex](https://plex.tv) provide. Media is fetched from a magnitude of supported protocols (HTTP, S3-compatible, Usenet, etc), converted into multiple different quality levels, and then uploaded to a S3-compatible storage provider. This enables cheap storage and ensures that buffering is never a problem.
+TRITON is a media pipeline that aims to go one step further than services like [Jellyfin](https://jellyfin.media) and [Plex](https://plex.tv) provide. Media is fetched from a magnitude of supported protocols (HTTP, S3-compatible, Usenet, etc), converted into multiple different quality levels, and then uploaded to a S3-compatible storage provider in an organized fashion. This enables cheap storage and ensures that buffering is never a problem. On top of all of this, a frontend allows users to watch your media on the go.
 
 # Installing Triton
 
