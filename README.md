@@ -5,17 +5,15 @@
   <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="License" />
 </p>
 
-<p align="center">A Media Pipeline</p>
+<p align="center">The <i>final</i> media center</p>
 
 # What is TRITON?
 
-TRITON is a media pipeline that is aimed towards converting media from unknown formats to a common format,
-and upload them to S3. The idea usecase is for uploading media to S3 to then be used by 
-[Jellyfin](https://github.com/jellyfin)/[Plex](https://github.com/plex).
+TRITON is a media pipeline that aims to go one step further than services like [Jellyfin](https://jellyfin.media) and [Plex](https://plex.tv) provide. Media is fetched from a magnitude of supported protocols (HTTP, S3-compatible, Usenet, etc), converted into multiple different quality levels, and then uploaded to a S3-compatible storage provider. This enables cheap storage and ensures that buffering is never a problem.
 
 # Installing Triton
 
-We havea few installation options:
+We have a few installation options:
 
   * [Quick evaluation](#quick-evaluation)
   * [Kubernetes](#kubernetes) 
@@ -102,6 +100,12 @@ Then run the service like normal. Yep. It's that simple.
 Services are "documented" in their Paw files located in [./paw](paw). Paw is an awesome API client that can
 be located here: https://paw.cloud/. They have a free trial which can be used to export to Postman if you do not
 want to purchase this client.
+
+## Architecture
+
+For now all we have documented is this graph: 
+
+![service arch](https://raw.githubusercontent.com/tritonmedia/triton/master/Triton%20Media%20(High%20Level).png)
 
 ## Important Things
 
