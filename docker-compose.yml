@@ -76,13 +76,26 @@ services:
     - ./config:/mnt/config
 
   twilight:
-    image: jaredallard/triton-twilight:prod
+    image: jaredallard/triton-twilight-go
     environment:
-      MINIO: 'http://minio:9000'
-      RABBITMQ: 'amqp://user:bitnami@rabbitmq'
-      CONFIG_ENV: production
+      TWILIGHT_STORAGE_PROVIDER: s3
+      TWILIGHT_S3_ENDPOINT: 'http://minio:9000'
+      TWILIGHT_S3_ACCESS_KEY: 'AKIAIOSFODNN7EXAMPLE'
+      TWILIGHT_S3_SECRET_KEY: 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
+      TWILIGHT_S3_BUCKET: 'triton-media'
+      TWILIGHT_RABBITMQ_ENDPOINT: 'amqp://user:bitnami@rabbitmq'
+      PORT: '8001'
     command: twilight
     ports:
     - 8001:8001
-    volumes:
-    - ./config:/mnt/config
+  
+  identifier:
+    image: jaredallard/triton-identifier
+    environment:
+      IDENTIFIER_S3_ENDPOINT: 'http://minio:9000'
+      IDENTIFIER_S3_ACCESS_KEY: 'AKIAIOSFODNN7EXAMPLE'
+      IDENTIFIER_S3_SECRET_KEY: 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
+      IDENTIFIER_S3_BUCKET: 'triton-media'
+      IDENTIFIER_POSTGRES_ENDPOINT: 'postgres'
+      IDENTIFIER_RABBITMQ_ENDPOINT: 'amqp://user:bitnami@rabbitmq'
+    command: identifier
