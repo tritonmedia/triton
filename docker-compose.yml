@@ -86,6 +86,7 @@ services:
   
   identifier:
     image: jaredallard/triton-identifier
+    restart: always
     env_file:
     - .env
     environment:
