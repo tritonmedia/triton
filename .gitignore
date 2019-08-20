@@ -5,3 +5,4 @@ beholder
 twilight
 converter
 .DS_Store
+.env

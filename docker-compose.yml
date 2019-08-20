@@ -31,22 +31,16 @@ services:
   # Our Services
   converter:
     image: jaredallard/triton-converter:prod
-    environment:
-      MEDIA: 'http://twilight:8001'
-      MINIO: 'http://minio:9000'
-      RABBITMQ: 'amqp://user:bitnami@rabbitmq'
-      POSTGRES: 'postgres'
-      CONFIG_ENV: production
+    env_file:
+    - .env
     volumes:
     - ./config:/mnt/config
 
   downloader:
     image: jaredallard/triton-downloader:prod
+    env_file:
+    - .env
     environment:
-      MINIO: 'http://minio:9000'
-      MEDIA: 'http://twilight:8001'
-      RABBITMQ: 'amqp://user:bitnami@rabbitmq'
-      CONFIG_ENV: production
       ALLOW_FILE_URLS: 'true'
     volumes:
     - ./config:/mnt/config
@@ -54,11 +48,10 @@ services:
 
   events:
     image: jaredallard/triton-events:prod
+    env_file:
+    - .env
     environment:
-      RABBITMQ: 'amqp://user:bitnami@rabbitmq'
-      POSTGRES: 'postgres'
       NO_TRELLO: 'true' 
-      CONFIG_ENV: production
     command: events
     ports:
     - 3401:3401 # Webhook
@@ -67,9 +60,9 @@ services:
 
   beholder:
     image: jaredallard/triton-beholder:prod
+    env_file:
+    - .env
     environment:
-      RABBITMQ: 'amqp://user:bitnami@rabbitmq'
-      POSTGRES: 'postgres'
       CONFIG_ENV: production
     command: beholder
     volumes:
@@ -77,6 +70,8 @@ services:
 
   twilight:
     image: jaredallard/triton-twilight-go
+    env_file:
+    - .env
     environment:
       TWILIGHT_STORAGE_PROVIDER: s3
       TWILIGHT_S3_ENDPOINT: 'http://minio:9000'
@@ -91,6 +86,8 @@ services:
   
   identifier:
     image: jaredallard/triton-identifier
+    env_file:
+    - .env
     environment:
       IDENTIFIER_S3_ENDPOINT: 'http://minio:9000'
       IDENTIFIER_S3_ACCESS_KEY: 'AKIAIOSFODNN7EXAMPLE'
