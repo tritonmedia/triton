@@ -15,7 +15,7 @@ services:
     volumes:
     - /bitnami
     environment:
-      ALLOW_EMPTY_PASSWORD: 'yes'
+      POSTGRESQL_PASSWORD: CHANGEME
       POSTGRESQL_DATABASE: media
     ports:
     - 5432:5432
