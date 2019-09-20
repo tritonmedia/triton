@@ -4,14 +4,21 @@ services:
   # RabbitMQ Instance
   rabbitmq:
     image: bitnami/rabbitmq:latest
+    volumes:
+    - /bitnami
     ports:
+    - 5672:5672
     - 15672:15672
 
   postgres:
     image: bitnami/postgresql
+    volumes:
+    - /bitnami
     environment:
       ALLOW_EMPTY_PASSWORD: 'yes'
       POSTGRESQL_DATABASE: media
+    ports:
+    - 5432:5432
   
   minio:
     image: minio/minio
@@ -20,6 +27,8 @@ services:
     - /data
     volumes:
     - /data
+    ports:
+    - 9000:9000
     environment:
       MINIO_ACCESS_KEY: "CHANGEME"
       MINIO_SECRET_KEY: "CHANGEME"
@@ -28,32 +37,27 @@ services:
   # Our Services
   converter:
     image: jaredallard/triton-converter:prod
-    environment:
-      MEDIA: 'http://twilight:8001'
-      MINIO: 'http://minio:9000'
-      POSTGRES: 'postgres'
-      RABBITMQ: 'amqp://user:bitnami@rabbitmq'
-      CONFIG_ENV: production
+    env_file:
+    - .env
     volumes:
     - ./config:/mnt/config
 
   downloader:
     image: jaredallard/triton-downloader:prod
+    env_file:
+    - .env
     environment:
-      MINIO: 'http://minio:9000'
-      MEDIA: 'http://twilight:8001'
-      RABBITMQ: 'amqp://user:bitnami@rabbitmq'
-      CONFIG_ENV: production
+      ALLOW_FILE_URLS: 'true'
     volumes:
     - ./config:/mnt/config
+    - /tmp/Bunny.mkv:/tmp/Bunny.mkv
 
   events:
     image: jaredallard/triton-events:prod
+    env_file:
+    - .env
     environment:
-      RABBITMQ: 'amqp://user:bitnami@rabbitmq'
-      POSTGRES: 'postgres'
       NO_TRELLO: 'true' 
-      CONFIG_ENV: production
     command: events
     ports:
     - 3401:3401 # Webhook
@@ -62,20 +66,31 @@ services:
 
   beholder:
     image: jaredallard/triton-beholder:prod
+    env_file:
+    - .env
     environment:
-      RABBITMQ: 'amqp://user:bitnami@rabbitmq'
-      POSTGRES: 'postgres'
       CONFIG_ENV: production
     command: beholder
     volumes:
     - ./config:/mnt/config
 
   twilight:
-    image: jaredallard/triton-twilight:prod
+    image: jaredallard/triton-twilight-go
+    env_file:
+    - .env
     environment:
-      MINIO: 'http://minio:9000'
-      RABBITMQ: 'amqp://user:bitnami@rabbitmq'
-      CONFIG_ENV: production
+      TWILIGHT_STORAGE_PROVIDER: s3
+      TWILIGHT_S3_BUCKET: 'triton-media'
+      PORT: '8001'
     command: twilight
-    volumes:
-    - ./config:/mnt/config
+    ports:
+    - 8001:8001
+  
+  identifier:
+    image: jaredallard/triton-identifier
+    restart: always
+    env_file:
+    - .env
+    environment:
+      IDENTIFIER_S3_BUCKET: 'triton-media'
+    command: identifier

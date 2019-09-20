@@ -74,11 +74,7 @@ services:
     - .env
     environment:
       TWILIGHT_STORAGE_PROVIDER: s3
-      TWILIGHT_S3_ENDPOINT: 'http://minio:9000'
-      TWILIGHT_S3_ACCESS_KEY: 'AKIAIOSFODNN7EXAMPLE'
-      TWILIGHT_S3_SECRET_KEY: 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
       TWILIGHT_S3_BUCKET: 'triton-media'
-      TWILIGHT_RABBITMQ_ENDPOINT: 'amqp://user:bitnami@rabbitmq'
       PORT: '8001'
     command: twilight
     ports:
@@ -90,10 +86,5 @@ services:
     env_file:
     - .env
     environment:
-      IDENTIFIER_S3_ENDPOINT: 'http://minio:9000'
-      IDENTIFIER_S3_ACCESS_KEY: 'AKIAIOSFODNN7EXAMPLE'
-      IDENTIFIER_S3_SECRET_KEY: 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
       IDENTIFIER_S3_BUCKET: 'triton-media'
-      IDENTIFIER_POSTGRES_ENDPOINT: 'postgres'
-      IDENTIFIER_RABBITMQ_ENDPOINT: 'amqp://user:bitnami@rabbitmq'
     command: identifier

@@ -29,8 +29,6 @@ $ docker-compose up
 
 ### Kubernetes
 
-**NOTE**: This is a production setup, but it is in the process of being revamped to be more user friendly.
-
 Clone the [charts](https://github.com/tritonmedia/charts) repo.
 
 ```bash
