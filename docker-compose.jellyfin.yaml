@@ -1,0 +1,78 @@
+version: '3.7'
+services:
+
+  # RabbitMQ Instance
+  rabbitmq:
+    image: bitnami/rabbitmq:latest
+    ports:
+    - 5672:5672
+    - 15672:15672
+
+  postgres:
+    image: bitnami/postgresql
+    environment:
+      ALLOW_EMPTY_PASSWORD: 'yes'
+      POSTGRESQL_DATABASE: media
+    ports:
+    - 5432:5432
+  
+  minio:
+    image: minio/minio
+    command:
+    - server
+    - /data
+    ports:
+    - 9000:9000
+    environment:
+      MINIO_ACCESS_KEY: "AKIAIOSFODNN7EXAMPLE"
+      MINIO_SECRET_KEY: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+
+  ###########################################
+  # Our Services
+  converter:
+    image: jaredallard/triton-converter
+    env_file:
+    - .env
+    volumes:
+    - ./config:/mnt/config
+
+  downloader:
+    image: jaredallard/triton-downloader
+    env_file:
+    - .env
+    environment:
+      ALLOW_FILE_URLS: 'true'
+    volumes:
+    - ./config:/mnt/config
+    - /tmp/Bunny.mkv:/tmp/Bunny.mkv
+
+  events:
+    image: jaredallard/triton-events
+    env_file:
+    - .env
+    environment:
+      NO_TRELLO: 'true' 
+    command: events
+    ports:
+    - 3401:3401 # Webhook
+    volumes:
+    - ./config:/mnt/config
+
+  beholder:
+    image: jaredallard/triton-beholder
+    env_file:
+    - .env
+    command: beholder
+    volumes:
+    - ./config:/mnt/config
+
+  twilight:
+    image: jaredallard/triton-twilight-go
+    env_file:
+    - .env
+    environment:
+      NO_IDENTIFIER: 'true'
+      PORT: '8001'
+    command: twilight
+    ports:
+    - 8001:8001
