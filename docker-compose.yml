@@ -30,14 +30,14 @@ services:
   ###########################################
   # Our Services
   converter:
-    image: jaredallard/triton-converter:prod
+    image: tritonmedia/converter:prod
     env_file:
     - .env
     volumes:
     - ./config:/mnt/config
 
   downloader:
-    image: jaredallard/triton-downloader:prod
+    image: tritonmedia/downloader:prod
     env_file:
     - .env
     environment:
@@ -47,7 +47,7 @@ services:
     - /tmp/Bunny.mkv:/tmp/Bunny.mkv
 
   events:
-    image: jaredallard/triton-events:prod
+    image: tritonmedia/events:prod
     env_file:
     - .env
     environment:
@@ -59,7 +59,7 @@ services:
     - ./config:/mnt/config
 
   beholder:
-    image: jaredallard/triton-beholder:prod
+    image: tritonmedia/beholder:prod
     env_file:
     - .env
     environment:
@@ -69,7 +69,7 @@ services:
     - ./config:/mnt/config
 
   twilight:
-    image: jaredallard/triton-twilight-go
+    image: tritonmedia/twilight
     env_file:
     - .env
     environment:
@@ -81,7 +81,7 @@ services:
     - 8001:8001
   
   identifier:
-    image: jaredallard/triton-identifier
+    image: tritonmedia/identifier
     restart: always
     env_file:
     - .env
