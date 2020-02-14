@@ -36,14 +36,14 @@ services:
   ###########################################
   # Our Services
   converter:
-    image: tritonmedia/converter:prod
+    image: tritonmedia/converter
     env_file:
     - .env
     volumes:
     - ./config:/mnt/config
 
   downloader:
-    image: tritonmedia/downloader:prod
+    image: tritonmedia/downloader
     env_file:
     - .env
     environment:
@@ -53,7 +53,7 @@ services:
     - /tmp/Bunny.mkv:/tmp/Bunny.mkv
 
   events:
-    image: tritonmedia/events:prod
+    image: tritonmedia/events
     env_file:
     - .env
     environment:
@@ -65,7 +65,7 @@ services:
     - ./config:/mnt/config
 
   beholder:
-    image: tritonmedia/beholder:prod
+    image: tritonmedia/beholder
     env_file:
     - .env
     environment:
