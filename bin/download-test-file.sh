@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Download the test file
+# Download the test file, if it doesn't exist
 
 if [[ -e "/tmp/Bunny.mkv" ]]; then
-  rm -rf /tmp/Bunny.mkv
+  exit 0
 fi
 
-wget -O /tmp/Bunny.mkv https://s3.amazonaws.com/x265.org/video/BigBuckBunny_2000hevc.mp4
+curl -L https://s3.amazonaws.com/x265.org/video/BigBuckBunny_2000hevc.mp4 > /tmp/Bunny.mkv

@@ -1,7 +1,21 @@
 version: '3.7'
 services:
+  ##########################################
+  # Frontend
+  jellyfin:
+    image: linuxserver/jellyfin
+    container_name: jellyfin
+    volumes:
+    - media-volume:/data
+    environment:
+    - PUID=1000
+    - PGID=1000
+    - TZ=America/Los_Angeles
+    ports:
+    - 8096:8096
 
-  # RabbitMQ Instance
+  ##########################################
+  # Infra
   rabbitmq:
     image: bitnami/rabbitmq:latest
     ports:
@@ -21,6 +35,8 @@ services:
     command:
     - server
     - /data
+    volumes:
+    - media-volume:/data
     ports:
     - 9000:9000
     environment:
@@ -76,3 +92,6 @@ services:
     command: twilight
     ports:
     - 8001:8001
+
+volumes:
+  media-volume:
